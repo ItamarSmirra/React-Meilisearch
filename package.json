@@ -1,0 +1,59 @@
+{
+  "name": "react-meilisearch",
+  "description": "react client for integration with meilisearch server",
+  "version": "1.0.0",
+  "private": false,
+  "main": "./dist/cjs/index.cjs.js",
+  "module": "./dist/esm/index.esm.js",
+  "browser": "./dist/umd/index.umd.js",
+  "typings": "./dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
+  "jsdelivr": "./dist/umd/index.umd.js",
+  "unpkg": "./dist/umd/index.umd.js",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "shx rm -rf dist/ && rollup -c && rollup -c --environment NODE_ENV:production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItamarSmirra/React-Meilisearch.git"
+  },
+  "keywords": [
+    "meilisearch",
+    "react",
+    "search"
+  ],
+  "author": "itamar-smirra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ItamarSmirra/React-Meilisearch/issues"
+  },
+  "homepage": "https://github.com/ItamarSmirra/React-Meilisearch#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.18.6",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.3",
+    "@types/react": "^18.0.15",
+    "rollup": "^2.76.0",
+    "rollup-plugin-dts": "^4.2.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "peerDependencies": {
+    "react": ">= 16.x",
+    "react-dom": ">= 16.x",
+    "meilisearch": ">= 0.22.0"
+  }
+}
