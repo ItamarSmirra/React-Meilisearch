@@ -6,7 +6,7 @@ import useFetchMore from '../useFetchMore/useFetchMore';
 
 const useSearch = (props: SearchArguments = {query: '', index: '', options: {} }) : UseSearchResult => {
     const [searchConfig, setsearchConfig] = useState<SearchArguments>({
-        ...props
+        ...props, options: { ...props.options, limit: props.options?.limit ?? 20 }
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<MeiliSearchError | null>(null);

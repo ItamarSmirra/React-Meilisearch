@@ -7,7 +7,7 @@ import useFetchMore from '../useFetchMore/useFetchMore';
 const useLazySearch = 
 (props: SearchArguments = {query: '', index: '', options: {} }): [(query: string, searchParameters?: SearchArguments) => void, UseSearchResult] => {
     const [searchConfig] = useState<SearchArguments>({
-        ...props 
+        ...props, options: { ...props.options, limit: props.options?.limit ?? 20 }
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<MeiliSearchError | null>(null);
