@@ -6,8 +6,8 @@ We based it on the [meilisearch](https://www.npmjs.com/package/meilisearch) npm 
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/ItamarSmirra/React-Meilisearch/main?color=pink)
 [![GitHub issues](https://img.shields.io/github/issues/ItamarSmirra/React-Meilisearch)](https://github.com/ItamarSmirra/React-Meilisearch/issues)
 ![GitHub](https://img.shields.io/github/license/ItamarSmirra/React-MEilisearch?color=purple)
-![GitHub repo file count](https://img.shields.io/github/directory-file-count/ItamarSmirra/
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-meilisearch?color=red)React-Meilisearch)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/ItamarSmirra/React-Meilisearch)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-meilisearch?color=red)
 
 # Install
 ```sh
@@ -84,7 +84,7 @@ export default UseSearchExample;
 | refetch | (SearchArguments (same as the hook parameters)) => void | method to refetch the search |
 | fetchMore | (FetchMoreParameters (same as the hook parameters with the callback updateResult)) => void | method to fetch more results, read [Infinite Scroll](#infinite-scroll) for more details | 
 
-<br>
+
 ## UseLazySearch Hook <!-- omit in toc -->
 Works the same way as Use Search hook, but returns a search funtion instead of triggering it when the component is mounted.
 ```javascript
@@ -135,7 +135,7 @@ export default UseLazySearchExample;
 | data | SearchResponse<Record<string, any>> / undefined / null | the search result |
 | fetchMore | (FetchMoreParameters (same as the hook parameters with the callback updateResult)) => void | method to fetch more results, read [Infinite Scroll](#infinite-scroll) for more details | 
 
-<br>
+
 ## UseMeilisearchClient Hook <!-- omit in toc -->
 Use this hook to get the meilisearch client and use it's normal methods described in the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
 ```javascript
@@ -170,8 +170,8 @@ const UseMeiliSearchClientExample = () => {
 export default UseMeiliSearchClientExample;
 ```
 
-<br>
-## Infinite Scroll
+
+## Infinite Scroll <!-- omit in toc -->
 You can easily implement infinite scroll or pagination search using the fetchMore function.<br>
 In the example below we used [react-infinite-scroll-hook](https://www.npmjs.com/package/react-infinite-scroll-hook) npm package to handle the scroll events. Feel free to change it to whatever you want.
 
@@ -233,8 +233,8 @@ const updateResult = (prev, fetchMoreResult) => {
 const loadMore = () => fetchMore({ options: {offset: data.hits.length}, updateResult });
  ```
  
- <br><br>
- ## Types
+ 
+ ## Types <!-- omit in toc -->
  All of the meilisearch types are available for you, in addition to these new ones:
  ```javascript
 type SearchArguments = {
@@ -259,7 +259,6 @@ type UseSearchResult = {
 }
  ```
  
- <br>
- ## License
+ ## License <!-- omit in toc -->
 
 [MIT](LICENSE)
