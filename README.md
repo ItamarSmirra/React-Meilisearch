@@ -1,7 +1,7 @@
 # React-Meilisearch
-The React client api for integreting with [Meilisearch Server](https://www.meilisearch.com/).<br>
+The React client api for integrating with [Meilisearch Server](https://www.meilisearch.com/).<br>
 It includes several simple hooks to help you integrate with your search server.<br>
-We based on the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
+We based it on the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
 
 # Install
 ```sh
@@ -9,15 +9,15 @@ npm install react-meilisearch
 ```
 
 # Getting Started
-#### Initialization <!-- omit in toc -->
-First you need to initialize a melisearch client and connect it to React.
+### Initialization <!-- omit in toc -->
+First you need to initialize a meilisearch client and connect it to React.
 ```javascript
 import { MeiliSearchProvider, MeiliSearchClient } from 'react-meilisearch';
 import './App.css'
 
 const App = () => {
   const meilisearch = new MeiliSearchClient({
-    host: 'http://127.0.0.1:7700',
+    host: 'http://localhost:7700',
     apiKey: 'masterKey',
   })
 
@@ -30,38 +30,15 @@ const App = () => {
 
 export default App
 ```
-### Use MeilisearchClient <!-- omit in toc -->
-Use this hook to get the meilisearch client and use it's normal methods described in the [meilisearch]([https://www.npmjs.com/package/meilisearch](https://www.npmjs.com/package/meilisearch#getting-started)) npm package.
+
+## UseSearch Hook <!-- omit in toc -->
+This hook recieves a query, index and advanced search options, triggers the search and returns the current state of the search.
 ```javascript
-import { useState } from 'react';
-import { useMeiliSearchClient } from 'react-meilisearch';
-
-const UseMeiliSearchClientExample = () => {
-    const meilisearchClient = useMeiliSearchClient();
-    const [searchResults, setSearchResults] = useState(null);
-
-    const onChange = (event) => {
-        meilisearchClient.index('movies').search(event.target.value)
-        .then(setSearchResults);
-    }
-    
-    return (
-        <div>
-            <input onChange={onChange} />
-            {
-                searchResults &&
-                <div>results count {searchResults.hits.length}</div>
-            }
-        </div>
-    )
-}
-
-export default UseMeiliSearchClientExample;
+const { loading, error, data } = useSearch({ index: 'movies', query: 'Comedy' });
 ```
 
-### Use Search <!-- omit in toc -->
-This hook gets a query, index adn advanced search options, trigger the search and return the current state of the search.
-In the example we used it along with a 'query' search parameter, using the [use-search-params](https://reactrouter.com/docs/en/v6/hooks/use-search-params) hook.
+#### Full Example: <!-- omit in toc -->
+In the following example we used it along with a 'query' search parameter, using the [use-search-params](https://reactrouter.com/docs/en/v6/hooks/use-search-params) hook.
 ```javascript
 import { useSearch } from 'react-meilisearch';
 import { useSearchParams } from 'react-router-dom';
@@ -102,8 +79,14 @@ export default UseSearchExample;
 | fetchMore | (FetchMoreParameters (same as the hook parameters with the callback updateResult)) => void | method to fetch more results, read [Infinite Scroll](#infinite-scroll) for more details | 
 
 
-### Use Lazy Search <!-- omit in toc -->
-Works the same as Use Search hook, but return a search funtion instead of trigger it when the component is mounted.
+## UseLazySearch Hook <!-- omit in toc -->
+Works the same way as Use Search hook, but returns a search funtion instead of triggering it when the component is mounted.
+```javascript
+const [search, { loading, error, data }] = useLazySearch({ index: 'movies' });
+search('Comedy');
+```
+
+#### Full Example: <!-- omit in toc -->
 ```javascript
 import { useLazySearch } from 'react-meilisearch';
 import './useLazySearchExample.css';
@@ -147,9 +130,43 @@ export default UseLazySearchExample;
 | data | SearchResponse<Record<string, any>> / undefined / null | the search result |
 | fetchMore | (FetchMoreParameters (same as the hook parameters with the callback updateResult)) => void | method to fetch more results, read [Infinite Scroll](#infinite-scroll) for more details | 
 
+## UseMeilisearchClient Hook <!-- omit in toc -->
+Use this hook to get the meilisearch client and use it's normal methods described in the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
+```javascript
+const meilisearchClient = useMeiliSearchClient();
+```
+
+#### Full Example: <!-- omit in toc -->
+```javascript
+import { useState } from 'react';
+import { useMeiliSearchClient } from 'react-meilisearch';
+
+const UseMeiliSearchClientExample = () => {
+    const meilisearchClient = useMeiliSearchClient();
+    const [searchResults, setSearchResults] = useState(null);
+
+    const onChange = (event) => {
+        meilisearchClient.index('movies').search(event.target.value)
+        .then(setSearchResults);
+    }
+    
+    return (
+        <div>
+            <input onChange={onChange} />
+            {
+                searchResults &&
+                <div>results count {searchResults.hits.length}</div>
+            }
+        </div>
+    )
+}
+
+export default UseMeiliSearchClientExample;
+```
+
 ## Infinite Scroll
 You can easily implement infinite scroll or pagination search using the fetchMore function.
-In the example we used [react-infinite-scroll-hook](https://www.npmjs.com/package/react-infinite-scroll-hook) npm package to handle the scroll event. Feel free to change it to whatever you want.
+In the example below we used [react-infinite-scroll-hook](https://www.npmjs.com/package/react-infinite-scroll-hook) npm package to handle the scroll events. Feel free to change it to whatever you want.
 
 ```javascript
 import { useSearch } from 'react-meilisearch';
@@ -195,7 +212,7 @@ const InfiniteScrollExample = ({ query }) => {
 export default InfiniteScrollExample;
 ```
 The default behavior of the fetchMore result is to concat the result hits with the previous data hits.<br>
-You can override this behavior by giving the fetchMore an alternative updateResult callback. Be sure you are returning the new data value.
+You can override this behavior by giving the fetchMore an alternative updateResult callback. Make sure you are returning the new data value.
 ```javascript
 const updateResult = (prev, fetchMoreResult) => {
     console.log('I am overriding the default updateResult function');
@@ -210,7 +227,7 @@ const loadMore = () => fetchMore({ options: {offset: data.hits.length}, updateRe
  ```
  
  ## Types
- All of meilisearch types are available for you, in addition to this new ones:
+ All of the meilisearch types are available for you, in addition to these new ones:
  ```javascript
 type SearchArguments = {
     query: string;
