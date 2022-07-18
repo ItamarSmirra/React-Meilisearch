@@ -31,8 +31,8 @@ const App = () => {
 export default App
 
 ```
-#### UseMeilisearchClient <!-- omit in toc -->
-Use this hook to get the meilisearch client and use it's normal methods described in the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
+### Use MeilisearchClient <!-- omit in toc -->
+Use this hook to get the meilisearch client and use it's normal methods described in the [meilisearch]([https://www.npmjs.com/package/meilisearch](https://www.npmjs.com/package/meilisearch#getting-started)) npm package.
 ```javascript
 import { useState } from 'react';
 import { useMeiliSearchClient } from 'react-meilisearch';
@@ -60,7 +60,7 @@ const UseMeiliSearchClientExample = () => {
 export default UseMeiliSearchClientExample;
 ```
 
-#### Use Search <!-- omit in toc -->
+### Use Search <!-- omit in toc -->
 This hook gets a query, index adn advanced search options, trigger the search and return the current state of the search.
 In the example we use it along with a 'query' search parameter, using the [use-search-params](https://reactrouter.com/docs/en/v6/hooks/use-search-params) hook.
 ```javascript
@@ -86,3 +86,18 @@ const UseLazySearchExample = () => {
 
 export default UseLazySearchExample;
 ```
+### Parameters <!-- omit in toc -->
+| parameter | type | description | default value |
+| ------ | ------ | ------ | ------ |
+| query | string | the query to search by | '' |
+| index | string | the melisearch index to search in | '' |
+| options | SearchParams | meilisearch search options described in the [documentation](https://docs.meilisearch.com/reference/api/search.html#search-parameters) | { limit: 30 } |
+
+### Return Value <!-- omit in toc -->
+| parameter | type | description |
+| ------ | ------ | ------ |
+| loading | boolean | is the search in progress |
+| error | MeiliSearchError / null | an error occured in the search request |
+| data | SearchResponse<Record<string, any>> / undefined / null | the search result |
+| refetch | (SearchArguments (same as the hook parameters)) => void | method to refetch the search |
+| fetchMore | (FetchMoreParameters (same as the hook parameters with the callback updateResult)) => void | method to fetch more results, read [Infinite Scroll]() for more details | 
