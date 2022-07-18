@@ -1,7 +1,7 @@
 {
   "name": "react-meilisearch",
   "description": "react client for integration with meilisearch server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
