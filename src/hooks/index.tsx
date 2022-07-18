@@ -1,7 +1,3 @@
-import useSearch from "./useSearch/useSearch";
-import useLazySearch from "./useLazySearch/useLazySearch";
-import useMeiliSearchClient from "./useMeiliSearchClient/useMeiliSearchClient";
-
-export default {
-    useSearch, useLazySearch, useMeiliSearchClient,
-}
+export { default as useLazySearch } from './useLazySearch/useLazySearch';
+export { default as useMeiliSearchClient } from './useMeiliSearchClient/useMeiliSearchClient';
+export { default as useSearch } from './useSearch/useSearch';

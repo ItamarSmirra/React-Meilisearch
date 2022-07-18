@@ -1,1 +1,1 @@
-export * from './MeiliSearchProvider/MeiliSearchProvider';
+export { default as MeiliSearchProvider } from './MeiliSearchProvider/MeiliSearchProvider';

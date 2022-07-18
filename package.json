@@ -3,21 +3,19 @@
   "description": "react client for integration with meilisearch server",
   "version": "1.0.0",
   "private": false,
-  "main": "./dist/cjs/index.cjs.js",
-  "module": "./dist/esm/index.esm.js",
-  "browser": "./dist/umd/index.umd.js",
-  "typings": "./dist/types/index.d.ts",
-  "types": "./dist/types/index.d.ts",
-  "jsdelivr": "./dist/umd/index.umd.js",
-  "unpkg": "./dist/umd/index.umd.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "sideEffects": false,
   "files": [
-    "dist",
-    "src",
-    "README.md"
+    "dist"
   ],
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "shx rm -rf dist/ && rollup -c && rollup -c --environment NODE_ENV:production"
+    "build:cjs": "tsc --outDir dist/cjs",
+    "build:es": "tsc -m esNext --outDir dist/esm",
+    "build": "shx rm -rf dist && npm run build:cjs && npm run build:es"
   },
   "repository": {
     "type": "git",
@@ -35,25 +33,21 @@
   },
   "homepage": "https://github.com/ItamarSmirra/React-Meilisearch#readme",
   "devDependencies": {
+    "@babel/core": "^7.18.6",
     "@babel/preset-env": "^7.18.6",
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^22.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-replace": "^4.0.0",
-    "@rollup/plugin-typescript": "^8.3.3",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.0.5",
     "@types/react": "^18.0.15",
-    "rollup": "^2.76.0",
-    "rollup-plugin-dts": "^4.2.2",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.32.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.5",
+    "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "peerDependencies": {
-    "react": ">= 16.x",
-    "react-dom": ">= 16.x",
-    "meilisearch": ">= 0.22.0"
+    "meilisearch": ">= 0.22.0",
+    "react": "16.x || 17.x || 18.x",
+    "react-dom": ">= 16.x"
   }
 }
