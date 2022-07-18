@@ -3,6 +3,11 @@ The React client api for integrating with [Meilisearch Server](https://www.meili
 It includes several simple hooks to help you integrate with your search server.<br>
 We based it on the [meilisearch](https://www.npmjs.com/package/meilisearch) npm package.
 
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/ItamarSmirra/React-Meilisearch/main?color=pink)
+[![GitHub issues](https://img.shields.io/github/issues/ItamarSmirra/React-Meilisearch)](https://github.com/ItamarSmirra/React-Meilisearch/issues)
+![GitHub](https://img.shields.io/github/license/ItamarSmirra/React-MEilisearch?color=purple)
+![GitHub repo file count](https://img.shields.io/github/directory-file-count/ItamarSmirra/React-Meilisearch)
+
 # Install
 ```sh
 npm install react-meilisearch
