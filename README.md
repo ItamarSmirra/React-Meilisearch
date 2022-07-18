@@ -38,7 +38,7 @@ const { loading, error, data } = useSearch({ index: 'movies', query: 'Comedy' })
 ```
 
 #### Full Example: <!-- omit in toc -->
-In the following example we used it along with a 'query' search parameter, using the [use-search-params](https://reactrouter.com/docs/en/v6/hooks/use-search-params) hook.
+In the following example we used the hook along with a 'query' search parameter, using the [use-search-params](https://reactrouter.com/docs/en/v6/hooks/use-search-params) hook.
 ```javascript
 import { useSearch } from 'react-meilisearch';
 import { useSearchParams } from 'react-router-dom';
@@ -89,7 +89,6 @@ search('Comedy');
 #### Full Example: <!-- omit in toc -->
 ```javascript
 import { useLazySearch } from 'react-meilisearch';
-import './useLazySearchExample.css';
 
 const UseLazySearchExample = () => {
     const [search, { loading, error, data }] = useLazySearch({ index: 'movies' });
@@ -165,7 +164,7 @@ export default UseMeiliSearchClientExample;
 ```
 
 ## Infinite Scroll
-You can easily implement infinite scroll or pagination search using the fetchMore function.
+You can easily implement infinite scroll or pagination search using the fetchMore function.<br>
 In the example below we used [react-infinite-scroll-hook](https://www.npmjs.com/package/react-infinite-scroll-hook) npm package to handle the scroll events. Feel free to change it to whatever you want.
 
 ```javascript
